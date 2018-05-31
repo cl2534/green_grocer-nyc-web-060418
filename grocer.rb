@@ -45,15 +45,15 @@ end
 
  def checkout(cart, coupons)
   total = 0.0
-  new_cart = cart
-  consolidate_cart(new_cart)
-  apply_coupons(new_cart, coupons)
-  apply_clearance(new_cart)
-  new_cart.each do |item, data|
-+    total_counter += (new_cart[item][:price] * new_cart[item][:count])
-+  end
-+  if total_counter > 100.0
-+    total_counter = total_counter * 0.9
-+  end
-+  return total_counter
+  
+  consolidate_cart(cart)
+  apply_coupons(cart, coupons)
+  apply_clearance(cart)
+  cart.each do |item, data|
+    total += (cart[item][:price] * cart[item][:count])
+  end
+  if total > 100.0
+    total = total * 0.9
+  end
+  return total
  end
