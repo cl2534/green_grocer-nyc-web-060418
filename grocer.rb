@@ -37,7 +37,7 @@ def apply_clearance(cart)
   cart.each do |item, data| 
     if cart[item][:clearance] == true
       discount = cart[item][:price] * 0.8
-      cart[item][:price] = discount 
+      cart[item][:price] = discount.round(2) 
     end 
   end 
   cart 
